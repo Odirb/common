@@ -1,0 +1,12 @@
+name: continuous
+
+on: [push]
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run ./build.sh
+        run: ./build.sh

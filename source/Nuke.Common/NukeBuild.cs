@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using JetBrains.Annotations;
 using Nuke.Common.CI.AzureDevOps;
 using Nuke.Common.CI.Bitrise;
+using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.CI.TeamCity;
 using Nuke.Common.CI.TravisCI;
 using Nuke.Common.Execution;
@@ -95,6 +96,7 @@ namespace Nuke.Common
                     HostType.Travis => new TravisCIOutputSink(),
                     HostType.TeamCity => new TeamCityOutputSink(new TeamCity()),
                     HostType.AzureDevOps => new AzureDevOpsOutputSink(new AzureDevOps()),
+                    HostType.GitHubActions => new GitHubActionsOutputSink(new GitHubActions()),
                     _ => ConsoleOutputSink.Default
                 };
 
