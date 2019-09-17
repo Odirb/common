@@ -41,12 +41,17 @@ if (Test-Path $DotNetGlobalFile) {
     }
 }
 
+Write-Host 1
 # If dotnet is installed locally, and expected version is not set or installation matches the expected version
 if ((Get-Command "dotnet" -ErrorAction SilentlyContinue) -ne $null -and `
      (!(Test-Path variable:DotNetVersion) -or $(& dotnet --version) -eq $DotNetVersion)) {
+
+    Write-Host 2
     $env:DOTNET_EXE = (Get-Command "dotnet").Path
 }
 else {
+
+    Write-Host 3
     $DotNetDirectory = "$TempDirectory\dotnet-win"
     $env:DOTNET_EXE = "$DotNetDirectory\dotnet.exe"
 
